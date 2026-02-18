@@ -977,7 +977,7 @@ const contactos = [
     )
   }
 
-const renderFechaHoraCompleto = (contacto: any) => {
+  const renderFechaHoraCompleto = (contacto: any) => {
     // Get sessions for this activity
     const sesiones = contacto.sesiones || [
       { numero: 1, fecha: "24/04/2025" },
