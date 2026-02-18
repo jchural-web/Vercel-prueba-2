@@ -1,0 +1,10 @@
+/* Ocultar barras de desplazamiento para Chrome, Safari y Opera */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ocultar barras de desplazamiento para IE, Edge y Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE y Edge */
+  scrollbar-width: none; /* Firefox */
+}

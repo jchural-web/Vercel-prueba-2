@@ -1,0 +1,31 @@
+/* Estilos globales para cabeceras */
+.header-primary {
+  background-color: #e6f0ff;
+  color: #1a56db;
+}
+
+.header-primary-dark {
+  background-color: #1a56db;
+  color: white;
+}
+
+.button-primary {
+  background-color: #1a56db;
+  color: white;
+}
+
+.button-primary:hover {
+  background-color: #1e429f;
+}
+
+.text-primary {
+  color: #1a56db;
+}
+
+.bg-primary-light {
+  background-color: #e6f0ff;
+}
+
+.border-primary {
+  border-color: #1a56db;
+}

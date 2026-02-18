@@ -1,0 +1,526 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    /* Color primario más vibrante */
+    --primary: 262 80% 50%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Secundario con un toque de azul brillante */
+    --secondary: 210 100% 50%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted más claro pero con un toque de color */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Acento más vibrante */
+    --accent: 142 71% 45%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Bordes más definidos */
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 262 80% 50%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 262 80% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 210 100% 50%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 142 71% 45%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 262 80% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Estilos personalizados para gráficos con colores más vivos */
+.chart-primary {
+  color: hsl(262, 80%, 55%);
+}
+
+.chart-secondary {
+  color: hsl(210, 100%, 50%);
+}
+
+.chart-accent {
+  color: hsl(142, 71%, 45%);
+}
+
+.chart-warning {
+  color: hsl(35, 100%, 50%);
+}
+
+/* Estilos para tarjetas con sombras más definidas */
+.dashboard-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.dashboard-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Estilos para métricas con colores más vivos */
+.metric-value {
+  font-weight: 700;
+  color: hsl(240, 20%, 15%);
+}
+
+.metric-label {
+  color: hsl(240, 10%, 40%);
+  font-weight: 500;
+}
+
+.metric-change-positive {
+  color: hsl(142, 71%, 45%);
+  font-weight: 600;
+}
+
+.metric-change-negative {
+  color: hsl(0, 84%, 60%);
+  font-weight: 600;
+}
+
+/* Gradientes vibrantes para fondos */
+.gradient-purple {
+  background: linear-gradient(135deg, hsl(262, 80%, 50%), hsl(280, 80%, 50%));
+}
+
+.gradient-blue {
+  background: linear-gradient(135deg, hsl(210, 100%, 50%), hsl(230, 100%, 50%));
+}
+
+.gradient-green {
+  background: linear-gradient(135deg, hsl(142, 71%, 45%), hsl(160, 71%, 45%));
+}
+
+/* Mejoras para la visualización de gráficos */
+.recharts-wrapper {
+  overflow: visible !important;
+}
+
+.recharts-cartesian-axis-tick-value {
+  font-size: 12px;
+}
+
+.recharts-legend-item-text {
+  font-size: 12px;
+}
+
+/* Asegurar que los contenedores de tarjetas tengan suficiente espacio */
+.dashboard-card .recharts-responsive-container {
+  margin-left: -10px;
+}
+
+/* Mejorar la visualización de etiquetas en gráficos */
+.recharts-pie-label-text {
+  font-weight: 500;
+}
+
+/* Add these styles to the end of the file to ensure the input field in the purple header looks good */
+.bg-[#7b3ff7] .bg-[#8f5af8]::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.bg-[#7b3ff7] input:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.bg-[#7b3ff7] input {
+  color: white;
+}
+
+/* Agregar estos estilos al final del archivo para personalizar la barra de desplazamiento */
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db transparent;
+  }
+}
+
+/* Estilos para asegurar que el scroll funcione correctamente */
+html,
+body {
+  height: 100%;
+  overflow-y: auto !important; /* Forzar overflow auto con !important */
+  overflow-x: hidden; /* Prevenir scroll horizontal innecesario */
+}
+
+/* Asegurar que el contenedor principal permita scroll */
+#__next,
+main,
+.overflow-auto {
+  overflow-y: auto !important;
+}
+
+/* Añadir una clase global para controlar los márgenes laterales de manera consistente */
+/* Agregar esto al final del archivo globals.css */
+
+.app-container {
+  @apply px-8 w-full max-w-full;
+}
+
+.content-container {
+  @apply px-8 w-full max-w-full;
+}
+
+/* Buscar cualquier estilo existente para numeraciones y reemplazarlo con el siguiente */
+
+/* Agregar estos estilos al final del archivo para las numeraciones */
+.number-indicator,
+[class*="step-number"],
+[class*="number-badge"],
+.numbered-item,
+.notification-badge,
+.badge-number,
+.step-indicator,
+.counter,
+.number-circle {
+  background-color: #0a5d36 !important; /* Verde oscuro */
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+/* Asegurar que todos los elementos con atributos data-count o similares tengan el mismo estilo */
+[data-count]:after,
+[data-notification]:after,
+[data-badge]:after {
+  background-color: #0a5d36 !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+/* Estilo específico para los números en los pasos del formulario */
+[class*="paso-"] .number,
+.form-step .number,
+.step .number,
+.numbered-field:before {
+  background-color: #0a5d36 !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+/* Estilo para los círculos numerados en los formularios */
+.form-field-number {
+  background-color: #0a5d36 !important;
+  color: white !important;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600 !important;
+}
+
+/* Estilo para los indicadores de notificación en pestañas y menús */
+.tab-notification,
+.menu-notification,
+.notification-count {
+  background-color: #0a5d36 !important;
+  color: white !important;
+  font-weight: 600 !important;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.75rem;
+}
+
+/* ===== NUEVOS ESTILOS PARA SUBRAYADO EN ELEMENTOS INTERACTIVOS ===== */
+
+/* Reglas generales para subrayado */
+button:hover,
+button:focus,
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/* Corrección para pestañas individuales */
+.TabsList button:hover,
+.TabsList button:focus,
+.tabs-list button:hover,
+.tabs-list button:focus,
+[role="tablist"] button:hover,
+[role="tablist"] button:focus {
+  text-decoration: underline;
+}
+
+/* Evitar que el contenedor de pestañas se subraye como un todo */
+.TabsList,
+.tabs-list,
+[role="tablist"] {
+  text-decoration: none !important;
+}
+
+/* Corrección para conversaciones en el chat */
+.conversation-item:hover,
+.conversation-item:focus,
+.user-chat-item:hover,
+.user-chat-item:focus {
+  text-decoration: underline;
+}
+
+/* Evitar que el contenedor de conversaciones se subraye como un todo */
+.conversations-list,
+.chat-list {
+  text-decoration: none !important;
+}
+
+/* Corrección para casos en identificar objeciones */
+.caso-item:hover .caso-title,
+.caso-item:focus .caso-title {
+  text-decoration: underline;
+}
+
+/* Evitar que elementos no desplegables se comporten como desplegables */
+.non-collapsible:hover,
+.non-collapsible:focus,
+.static-content:hover,
+.static-content:focus {
+  text-decoration: none !important;
+}
+
+/* Reglas específicas para elementos individuales */
+.tab-trigger:hover,
+.tab-trigger:focus {
+  text-decoration: underline;
+}
+
+.tab-list {
+  text-decoration: none !important;
+}
+
+.tab-list > * {
+  text-decoration: none;
+}
+
+.tab-list > *:hover,
+.tab-list > *:focus {
+  text-decoration: underline;
+}
+
+/* Reglas específicas para el chat */
+.chat-user-item {
+  text-decoration: none;
+}
+
+.chat-user-item:hover,
+.chat-user-item:focus {
+  text-decoration: underline;
+}
+
+.chat-users-list {
+  text-decoration: none !important;
+}
+
+.chat-users-list > * {
+  text-decoration: none;
+}
+
+.chat-users-list > *:hover,
+.chat-users-list > *:focus {
+  text-decoration: underline;
+}
+
+/* Reglas específicas para los casos */
+.caso-container {
+  text-decoration: none !important;
+}
+
+.caso-title {
+  text-decoration: none;
+}
+
+.caso-title:hover,
+.caso-title:focus {
+  text-decoration: underline;
+}
+
+.caso-content {
+  text-decoration: none !important;
+}
+
+/* Reglas más específicas para elementos interactivos */
+button:hover span,
+button:focus span,
+a:hover span,
+a:focus span {
+  text-decoration: inherit;
+}
+
+/* Regla para evitar subrayado en elementos no interactivos */
+.non-interactive,
+.non-interactive:hover,
+.non-interactive:focus,
+.static-text,
+.static-text:hover,
+.static-text:focus,
+.read-only,
+.read-only:hover,
+.read-only:focus {
+  text-decoration: none !important;
+}
+
+/* Regla para evitar que los contenedores se subrayen */
+.container,
+.container:hover,
+.container:focus,
+.wrapper,
+.wrapper:hover,
+.wrapper:focus,
+.box,
+.box:hover,
+.box:focus {
+  text-decoration: none !important;
+}
+
+/* Regla para asegurar que solo se subraye el elemento específico */
+.interactive-parent {
+  text-decoration: none !important;
+}
+
+.interactive-parent > .interactive-child:hover,
+.interactive-parent > .interactive-child:focus {
+  text-decoration: underline;
+}
+
+/* Reglas específicas para los componentes de la aplicación */
+/* 1. Pestañas */
+.TabsTrigger:hover,
+.TabsTrigger:focus,
+[data-state="active"]:hover,
+[data-state="active"]:focus,
+[data-state="inactive"]:hover,
+[data-state="inactive"]:focus {
+  text-decoration: underline;
+}
+
+.TabsList,
+.TabsList:hover,
+.TabsList:focus {
+  text-decoration: none !important;
+}
+
+/* 2. Chat */
+.user-item:hover,
+.user-item:focus {
+  text-decoration: underline;
+}
+
+.users-list,
+.users-list:hover,
+.users-list:focus {
+  text-decoration: none !important;
+}
+
+/* 3. Casos */
+.caso-header:hover,
+.caso-header:focus {
+  text-decoration: underline;
+}
+
+.caso-wrapper,
+.caso-wrapper:hover,
+.caso-wrapper:focus,
+.caso-body,
+.caso-body:hover,
+.caso-body:focus {
+  text-decoration: none !important;
+}
+
+/* Regla global para asegurar que solo se subraye el elemento específico */
+*:hover > *,
+*:focus > * {
+  text-decoration: none;
+}
+
+*:hover,
+*:focus {
+  text-decoration-skip-ink: all;
+}
+
+/* Reglas específicas para elementos individuales */
+.individual-tab:hover,
+.individual-tab:focus {
+  text-decoration: underline;
+}
+
+.individual-chat-user:hover,
+.individual-chat-user:focus {
+  text-decoration: underline;
+}
+
+.individual-caso:hover,
+.individual-caso:focus {
+  text-decoration: underline;
+}
+
+/* Regla para evitar que los contenedores se subrayen */
+.tabs-container,
+.chat-container,
+.casos-container {
+  text-decoration: none !important;
+}
+
+/* Regla para evitar que los elementos no interactivos se subrayen */
+.non-interactive-tab,
+.non-interactive-chat-user,
+.non-interactive-caso {
+  text-decoration: none !important;
+}
