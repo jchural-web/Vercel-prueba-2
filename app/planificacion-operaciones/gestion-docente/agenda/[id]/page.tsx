@@ -826,8 +826,6 @@ const contactos = [
     setInboxEmails((prev) => prev.map((e) => (e.id === emailId ? { ...e, isRead: true } : e)))
   }
 
-  const baseTagClass = "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border"
-
   // States for email and phone inputs
   const [email, setEmail] = useState(docenteData.email)
   const [phone, setPhone] = useState(docenteData.phone)
@@ -839,6 +837,9 @@ const contactos = [
     setEmail(docenteData.email)
     setPhone(docenteData.phone)
   }, [selectedDocente])
+
+  // Non-hook constants
+  const baseTagClass = "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border"
 
   const handleWhatsappMessageInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setWhatsappMessageInput(e.target.value)
@@ -3328,7 +3329,7 @@ const contactos = [
                       </td>
                       <td className="px-4 py-3 text-center">
                         <span className="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
-                          En ejecución
+                          En ejecuci��n
                         </span>
                       </td>
                       <td className="px-4 py-3 text-center">
