@@ -738,6 +738,18 @@ const contactos = [
 
   const [expandedCentros, setExpandedCentros] = useState<number[]>([])
 
+  // States for email and phone inputs
+  const [email, setEmail] = useState(docenteData.email)
+  const [phone, setPhone] = useState(docenteData.phone)
+  const [whatsappMessageInput, setWhatsappMessageInput] = useState("")
+  const [isWhatsAppTemplateModalOpen, setIsWhatsAppTemplateModalOpen] = useState(false)
+
+  // Update email and phone when selected docente changes
+  React.useEffect(() => {
+    setEmail(docenteData.email)
+    setPhone(docenteData.phone)
+  }, [selectedDocente])
+
   const toggleCentroExpanded = (id: number) => {
     setExpandedCentros(prev => 
       prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
@@ -825,18 +837,6 @@ const contactos = [
     // Mark as read
     setInboxEmails((prev) => prev.map((e) => (e.id === emailId ? { ...e, isRead: true } : e)))
   }
-
-  // States for email and phone inputs
-  const [email, setEmail] = useState(docenteData.email)
-  const [phone, setPhone] = useState(docenteData.phone)
-  const [whatsappMessageInput, setWhatsappMessageInput] = useState("")
-  const [isWhatsAppTemplateModalOpen, setIsWhatsAppTemplateModalOpen] = useState(false)
-
-  // Update email and phone when selected docente changes
-  React.useEffect(() => {
-    setEmail(docenteData.email)
-    setPhone(docenteData.phone)
-  }, [selectedDocente])
 
   // Non-hook constants
   const baseTagClass = "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border"
