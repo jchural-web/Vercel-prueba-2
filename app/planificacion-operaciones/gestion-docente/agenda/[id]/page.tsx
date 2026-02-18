@@ -828,6 +828,26 @@ const contactos = [
 
   const baseTagClass = "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border"
 
+  // States for email and phone inputs
+  const [email, setEmail] = useState(docenteData.email)
+  const [phone, setPhone] = useState(docenteData.phone)
+  const [whatsappMessageInput, setWhatsappMessageInput] = useState("")
+  const [isWhatsAppTemplateModalOpen, setIsWhatsAppTemplateModalOpen] = useState(false)
+
+  // Update email and phone when selected docente changes
+  React.useEffect(() => {
+    setEmail(docenteData.email)
+    setPhone(docenteData.phone)
+  }, [selectedDocente])
+
+  const handleWhatsappMessageInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setWhatsappMessageInput(e.target.value)
+  }
+
+  const handleSelectWhatsAppTemplate = (templateText: string) => {
+    setWhatsappMessageInput(templateText)
+  }
+
   const renderEstado = (estado: string) => {
     if (estado === "EJECUTADO") {
       return (
@@ -1035,27 +1055,6 @@ const contactos = [
         </div>
       </div>
     )
-  }
-
-  // States for email and phone inputs
-  const [email, setEmail] = useState(docenteData.email)
-  const [phone, setPhone] = useState(docenteData.phone)
-
-  // Update email and phone when selected docente changes
-  React.useEffect(() => {
-    setEmail(docenteData.email)
-    setPhone(docenteData.phone)
-  }, [selectedDocente])
-
-  const [whatsappMessageInput, setWhatsappMessageInput] = useState("")
-  const [isWhatsAppTemplateModalOpen, setIsWhatsAppTemplateModalOpen] = useState(false)
-
-  const handleWhatsappMessageInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setWhatsappMessageInput(e.target.value)
-  }
-
-  const handleSelectWhatsAppTemplate = (templateText: string) => {
-    setWhatsappMessageInput(templateText)
   }
 
   return (
