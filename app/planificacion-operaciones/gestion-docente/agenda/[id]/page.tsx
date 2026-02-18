@@ -751,85 +751,9 @@ const contactos = [
   }, [selectedDocente])
 
   const toggleCentroExpanded = (id: number) => {
-    setExpandedCentros(prev => 
-      prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
+    setExpandedCentros((prev) =>
+      prev.includes(id) ? prev.filter((c) => c !== id) : [...prev, id]
     )
-  }
-
-  const handleTCClick = (contacto: any) => {
-    setAudioModal({
-      isOpen: true,
-      audioUrl: "/audio/sample-call-recording.mp3",
-      callInfo: {
-        fecha: contacto.fechaRealizada,
-        hora: contacto.horaRealizada,
-        duracion: contacto.duracionConversacion,
-        contacto: "Cliente - Llamada de seguimiento",
-      },
-    })
-  }
-
-  const closeAudioModal = () => {
-    setAudioModal({
-      isOpen: false,
-      audioUrl: "",
-      callInfo: null,
-    })
-  }
-
-  const handleViewEmail = (email: EmailItem) => {
-    setSelectedEmail({
-      sender: email.sender,
-      recipient: email.recipient,
-      subject: email.subject,
-      content: email.content,
-      date: `${email.date} ${email.time}`,
-    })
-
-    if (!email.isRead) {
-      const updatedEmails = emailData.map((item) => (item.id === email.id ? { ...item, isRead: true } : item))
-      setEmailData(updatedEmails)
-      setEmailUnreadCount((prev) => Math.max(0, prev - 1))
-    }
-
-    setIsEmailViewerOpen(true)
-  }
-
-  // CHANGE: Add handler to view email from table
-  const handleViewEmailFromTable = (email: EmailItem) => {
-    // Create a conversation thread combining sent and received emails with the same subject
-    const relatedEmails = emailData.filter(e => e.subject === email.subject)
-    
-    // Sort by date and time to create a proper conversation thread
-    const sortedEmails = relatedEmails.sort((a, b) => {
-      const dateA = new Date(`${a.date} ${a.time}`)
-      const dateB = new Date(`${b.date} ${b.time}`)
-      return dateA.getTime() - dateB.getTime()
-    })
-
-    const emailThread: EmailThread = {
-      subject: email.subject,
-      sender: email.sender,
-      recipient: email.recipient,
-      messages: sortedEmails.map((e) => ({
-        id: `msg-${e.id}`,
-        sender: e.sender,
-        content: e.content,
-        date: `${e.date} ${e.time}`,
-        isOutgoing: e.status === "Enviado",
-      })),
-    }
-
-    setSelectedEmail(emailThread)
-
-    // Mark as read when viewed
-    if (!email.isRead) {
-      const updatedEmails = emailData.map((item) => (item.id === email.id ? { ...item, isRead: true } : item))
-      setEmailData(updatedEmails)
-      setEmailUnreadCount((prev) => Math.max(0, prev - 1))
-    }
-
-    setIsEmailViewerOpen(true)
   }
 
   const handleInboxEmailClick = (emailId: number) => {
@@ -849,9 +773,7 @@ const contactos = [
     setWhatsappMessageInput(templateText)
   }
 
-  const renderEstado = (estado: string) => {
-    if (estado === "EJECUTADO") {
-      return (
+  return (
         <span className={`${baseTagClass} bg-green-100 text-green-800 border-green-200`}>
           <svg className="mr-1 h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
