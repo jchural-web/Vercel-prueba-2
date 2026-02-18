@@ -1050,8 +1050,7 @@ const contactos = [
 
         <div className="flex flex-wrap gap-3">
           {contacto.estado && renderEstado(contacto.estado)}
-          {contacto.duracionConversacion &&
-            renderDuracionBasica(contacto.duracionConversacion, contacto.id, contacto)}
+          {contacto.duracionConversacion && renderDuracionBasica(contacto.duracionConversacion, contacto.id, contacto)}
         </div>
       </div>
     )
