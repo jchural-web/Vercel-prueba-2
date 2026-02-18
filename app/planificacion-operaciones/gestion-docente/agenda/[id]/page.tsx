@@ -974,25 +974,11 @@ const contactos = [
     )
 
     return (
-      <div className="flex flex-col gap-2">
-        {/* Flow badges: Inicio -> Confirmó -> Fin */}
-        <div className="flex items-center gap-1">
-          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600 border border-gray-200">
-            Inicio
-          </span>
-          <svg className="h-3 w-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-600 border border-green-200">
-            Confirmó
-          </span>
-          <svg className="h-3 w-3 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-600 border border-blue-200">
-            Fin
-          </span>
-        </div>
+      <div className="flex flex-wrap gap-2">
+        {tipoContacto === "Whatsapp" && renderWhatsapp()}
+        {tipoContacto === "Correo" && renderCorreo()}
+        {tipoContacto === "Llamada" && renderLlamada()}
+        {duracionTotal && renderTiempoTotal()}
       </div>
     )
   }
