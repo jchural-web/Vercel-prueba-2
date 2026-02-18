@@ -773,7 +773,9 @@ const contactos = [
     setWhatsappMessageInput(templateText)
   }
 
-  return (
+  const renderEstado = (estado: string) => {
+    if (estado === "EJECUTADO") {
+      return (
         <span className={`${baseTagClass} bg-green-100 text-green-800 border-green-200`}>
           <svg className="mr-1 h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -810,48 +812,11 @@ const contactos = [
         </span>
       )
     } else {
-      return (
-        null
-      )
-    }
-  }
-
-  const renderDuracionBasica = (total: string, contactoId: number, contacto: any) => {
-    if (contactoId === 1 || !total) {
       return null
     }
-
-    return null
   }
 
-  const renderFaseTag = (faseInicial: string, faseFinal: string) => {
-    if (!faseInicial || !faseFinal) return null
-
-    return (
-      <span className={`${baseTagClass} bg-red-100 text-red-800 border-red-200 whitespace-nowrap flex-shrink-0`}>
-        <svg className="mr-1 h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-        </svg>
-        <span>
-          {faseInicial} → {faseFinal}
-        </span>
-      </span>
-    )
-  }
-
-  const renderEtiquetasAdicionales = (tipoContacto: string, contactoId: number, duracionTotal: string) => {
-    const renderWhatsapp = () => (
-      <span className={`${baseTagClass} bg-green-100 text-green-700 border-green-200`}>
-        <svg className="mr-1 h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-          />
-        </svg>
-        <span>Whatsapp</span>
-      </span>
+  return (
     )
 
     const renderCorreo = () => (
